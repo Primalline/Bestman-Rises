@@ -1,0 +1,26 @@
+class Umbrella{
+    constructor(x, y){
+        var options = {
+            isStatic : true
+        }
+        this.image = loadAnimation("Walking Frame/walking_1.png", "Walking Frame/walking_2.png", "Walking Frame/walking_3.png", "Walking Frame/walking_4.png");
+        this.umbrella = Bodies.circle(x,y,50,options);
+        this.radius = 50;
+        World.add(world, this.umbrella);
+        this.bestmanImg = loadImage("bat/Bestman-01.png");
+    }
+
+    remove(){
+        var pos = this.umbrella.position;
+        World.remove(world,this.umbrella);
+    }
+
+    display(){
+        var pos = this.umbrella.position;
+        imageMode(CENTER);
+        if(frameCount >= 200)
+            image(this.bestmanImg,pos.x,pos.y+80,300,300);
+        else
+            animation(this.image,pos.x,pos.y+70,300,300);
+    }
+}
